@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.92rem;
+  --background: oklch(0.985 0.01 105);
+  --foreground: oklch(0.21 0.03 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23 0.03 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23 0.03 240);
+  --primary: oklch(0.61 0.14 198);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.95 0.02 205);
+  --secondary-foreground: oklch(0.27 0.03 240);
+  --muted: oklch(0.96 0.015 210);
+  --muted-foreground: oklch(0.54 0.02 236);
+  --accent: oklch(0.94 0.03 190);
+  --accent-foreground: oklch(0.2 0.03 238);
+  --destructive: oklch(0.61 0.23 23);
+  --border: oklch(0.89 0.02 215);
+  --input: oklch(0.89 0.02 215);
+  --ring: oklch(0.62 0.15 190);
+}
+
+.dark {
+  --background: oklch(20.86% 0.02393 231.259);
+  --foreground: oklch(0.95 0.01 198);
+  --card: oklch(0.21 0.02 232);
+  --card-foreground: oklch(0.95 0.01 198);
+  --popover: oklch(0.21 0.02 232);
+  --popover-foreground: oklch(0.95 0.01 198);
+  --primary: oklch(0.74 0.15 167);
+  --primary-foreground: oklch(0.17 0.02 232);
+  --secondary: oklch(0.29 0.02 232);
+  --secondary-foreground: oklch(0.93 0.01 198);
+  --muted: oklch(0.28 0.02 232);
+  --muted-foreground: oklch(0.72 0.01 208);
+  --accent: oklch(0.31 0.03 168);
+  --accent-foreground: oklch(0.94 0.01 198);
+  --destructive: oklch(0.69 0.2 22);
+  --border: oklch(0.34 0.02 232);
+  --input: oklch(0.34 0.02 232);
+  --ring: oklch(0.73 0.15 167);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: 'Inter', 'IBM Plex Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply m-0 bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at 10% -5%, color-mix(in oklch, var(--primary) 15%, transparent), transparent 35%),
+      radial-gradient(circle at 90% 0%, color-mix(in oklch, var(--accent) 22%, transparent), transparent 38%);
+  }
+
+  kbd {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .dark .md-editor {
+    background-color: transparent !important;
+  }
+
+  .dark .md-editor-toolbar-wrapper {
+    background-color: transparent !important;
+    border-bottom: 1px solid color-mix(in oklch, var(--border) 88%, white 12%);
+  }
+
+  .dark .md-editor-input-wrapper,
+  .dark .md-editor-preview-wrapper {
+    background-color: transparent !important;
+  }
+
+  .md-editor,
+  .md-editor-toolbar-wrapper,
+  .md-editor-input-wrapper,
+  .md-editor-preview-wrapper {
+    background-color: transparent !important;
+  }
+
+  .dark .md-editor-content {
+    color: var(--foreground);
+  }
+
+  .detail-markdown .md-editor-preview-wrapper {
+    @apply bg-transparent px-0;
+  }
+
+  .detail-markdown .md-editor-preview {
+    @apply text-sm leading-7;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .detail-markdown pre,
+  .detail-markdown code,
+  .detail-markdown table {
+    max-width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .mobile-editor .md-editor-preview-wrapper {
+      display: none !important;
+    }
+
+    .mobile-editor .md-editor-input-wrapper {
+      width: 100% !important;
+      flex: 1 1 100% !important;
+    }
+  }
+}
