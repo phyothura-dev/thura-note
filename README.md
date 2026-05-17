@@ -1,7 +1,6 @@
-# Developer Note Frontend
+# Thura Note
 
 Vue 3 frontend for a markdown-based note-taking app (auth-based, per-user notes) integrated with Flask backend APIs.
-
 This project is written with reference to the Edge Note repository: https://github.com/kaungkhantjc/edge-note
 
 ## Tech Stack
@@ -34,7 +33,7 @@ npm run dev         # start local dev server
 npm run build       # type-check + production build
 npm run preview     # preview production build
 npm run typecheck   # run TypeScript checks only
-npm run cf:deploy   # build and deploy dist/ to Cloudflare Pages
+npm run cf:deploy   # build and deploy dist/ to cloudflare
 ```
 
 ## Project Structure
